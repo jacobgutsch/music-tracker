@@ -41,6 +41,9 @@ public class Song {
     @LastModifiedDate
     private long updateTimestamp;
 
+    @Column(name = "tags")
+    private String tags;
+
     public int getSongId() {
         return songId;
     }
@@ -113,6 +116,14 @@ public class Song {
         this.updateTimestamp = updateTimestamp;
     }
 
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -121,12 +132,12 @@ public class Song {
 
         Song song = (Song) o;
 
-        return new EqualsBuilder().append(songId, song.songId).append(pageNumber, song.pageNumber).append(createTimestamp, song.createTimestamp).append(updateTimestamp, song.updateTimestamp).append(book, song.book).append(songName, song.songName).append(composerName, song.composerName).append(season, song.season).append(instrument, song.instrument).isEquals();
+        return new EqualsBuilder().append(songId, song.songId).append(pageNumber, song.pageNumber).append(createTimestamp, song.createTimestamp).append(updateTimestamp, song.updateTimestamp).append(book, song.book).append(songName, song.songName).append(composerName, song.composerName).append(season, song.season).append(instrument, song.instrument).append(tags, song.tags).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(songId).append(book).append(songName).append(composerName).append(season).append(instrument).append(pageNumber).append(createTimestamp).append(updateTimestamp).toHashCode();
+        return new HashCodeBuilder(17, 37).append(songId).append(book).append(songName).append(composerName).append(season).append(instrument).append(pageNumber).append(createTimestamp).append(updateTimestamp).append(tags).toHashCode();
     }
 
     @Override
@@ -141,6 +152,7 @@ public class Song {
                 ", pageNumber=" + pageNumber +
                 ", createTimestamp=" + createTimestamp +
                 ", updateTimestamp=" + updateTimestamp +
+                ", tags='" + tags + '\'' +
                 '}';
     }
 }

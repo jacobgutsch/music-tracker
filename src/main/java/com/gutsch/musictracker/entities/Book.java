@@ -39,6 +39,9 @@ public class Book {
     @LastModifiedDate
     private long updateTimestamp;
 
+    @Column(name = "tags")
+    private String tags;
+
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Song> songs;
 
@@ -106,6 +109,22 @@ public class Book {
         this.updateTimestamp = updateTimestamp;
     }
 
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public Set<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(Set<Song> songs) {
+        this.songs = songs;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -114,12 +133,12 @@ public class Book {
 
         Book book = (Book) o;
 
-        return new EqualsBuilder().append(bookId, book.bookId).append(createTimestamp, book.createTimestamp).append(updateTimestamp, book.updateTimestamp).append(bookName, book.bookName).append(authorName, book.authorName).append(publisherName, book.publisherName).append(season, book.season).append(instrument, book.instrument).append(songs, book.songs).isEquals();
+        return new EqualsBuilder().append(bookId, book.bookId).append(createTimestamp, book.createTimestamp).append(updateTimestamp, book.updateTimestamp).append(bookName, book.bookName).append(authorName, book.authorName).append(publisherName, book.publisherName).append(season, book.season).append(instrument, book.instrument).append(tags, book.tags).append(songs, book.songs).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(bookId).append(bookName).append(authorName).append(publisherName).append(season).append(instrument).append(createTimestamp).append(updateTimestamp).append(songs).toHashCode();
+        return new HashCodeBuilder(17, 37).append(bookId).append(bookName).append(authorName).append(publisherName).append(season).append(instrument).append(createTimestamp).append(updateTimestamp).append(tags).append(songs).toHashCode();
     }
 
     @Override
@@ -133,6 +152,7 @@ public class Book {
                 ", instrument='" + instrument + '\'' +
                 ", createTimestamp=" + createTimestamp +
                 ", updateTimestamp=" + updateTimestamp +
+                ", tags='" + tags + '\'' +
                 ", songs=" + songs +
                 '}';
     }

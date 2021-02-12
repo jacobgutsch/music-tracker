@@ -10,6 +10,7 @@ CREATE TABLE `book` (
                         `instrument` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
                         `create_timestamp` DATETIME NOT NULL DEFAULT current_timestamp(),
                         `update_timestamp` DATETIME NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+                        `tags` VARCHAR(256) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
                         PRIMARY KEY (`book_id`) USING BTREE
 )
     COLLATE='utf8_general_ci'
@@ -27,6 +28,7 @@ CREATE TABLE `song` (
                         `page` INT(10) UNSIGNED NULL DEFAULT NULL,
                         `create_timestamp` DATETIME NOT NULL DEFAULT current_timestamp(),
                         `update_timestamp` DATETIME NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+                        `tags` VARCHAR(256) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
                         PRIMARY KEY (`song_id`) USING BTREE,
                         INDEX `FK__book` (`book_id`) USING BTREE,
                         CONSTRAINT `FK__book` FOREIGN KEY (`book_id`) REFERENCES `music_tracker`.`book` (`book_id`) ON UPDATE CASCADE ON DELETE CASCADE
