@@ -20,7 +20,7 @@ AUTO_INCREMENT=1
 
 CREATE TABLE `song` (
                         `song_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-                        `book_id` INT(10) UNSIGNED NOT NULL DEFAULT NULL,
+                        `book_id` INT(10) UNSIGNED DEFAULT NULL,
                         `song_name` VARCHAR(50) NOT NULL COLLATE 'utf8_general_ci',
                         `composer_name` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
                         `season` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8_general_ci',

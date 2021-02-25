@@ -1,7 +1,7 @@
 package com.gutsch.musictracker.repositories;
 
 import com.gutsch.musictracker.entities.Song;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SongRepository extends CrudRepository<Song, Integer> {
+public interface SongRepository extends JpaRepository<Song, Integer> {
 }

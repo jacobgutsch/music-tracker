@@ -12,10 +12,11 @@ public class Song {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "song_id", nullable = false)
     private int songId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "book_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id")
     private Book book;
 
     @Column(name = "song_name")
